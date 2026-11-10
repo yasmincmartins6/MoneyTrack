@@ -1,0 +1,40 @@
+MoneyTrack — Login e cadastro local corrigidos
+
+Arquivos:
+- index.html: tela de login, cadastro e estado de login concluído
+- style.css: design responsivo
+- script.js: validações, cadastro local, verificação de senha e sessão demonstrativa
+
+Como executar:
+1. Extraia todos os arquivos para a mesma pasta.
+2. Abra index.html em um navegador atualizado.
+3. Clique em “Criar conta”, cadastre nome, e-mail e senha com pelo menos 8 caracteres.
+4. Volte ao login e entre com o e-mail e senha cadastrados.
+
+O que foi corrigido:
+- O login não mostra mais a mensagem fixa de “ainda precisa ser conectado”.
+- É possível criar uma conta demonstrativa e entrar com as credenciais cadastradas.
+- A senha é armazenada como derivação PBKDF2 com salt, não em texto aberto.
+- A tela mostra o estado de login concluído e permite sair.
+
+Limitações importantes:
+- Esta é uma autenticação demonstrativa no próprio navegador, adequada para um projeto escolar local.
+- Não é um sistema seguro para dados financeiros reais: quem tem acesso ao perfil do navegador/computador pode manipular os dados locais.
+- A recuperação por e-mail não está disponível offline.
+- As contas ficam salvas no armazenamento do navegador em que foram criadas; limpar os dados do navegador pode apagá-las.
+- Se o navegador bloquear Web Crypto em arquivo local, execute a pasta por um servidor local (por exemplo, a extensão Live Server do VS Code). Não use senhas reais.
+
+
+Cadastro em página separada:
+- O link “Criar conta” abre cadastro.html.
+- cadastro.html grava usuários no mesmo armazenamento local que index.html utiliza.
+- Depois do cadastro, a página volta ao login.
+- Para testar: abra cadastro.html, crie a conta e entre em index.html com as mesmas credenciais.
+
+
+Página inicial / dashboard:
+- Após o login bem-sucedido, index.html redireciona para dashboard.html.
+- O dashboard mostra o saldo, total de receitas e total de despesas.
+- Você pode adicionar e excluir movimentações; os valores ficam salvos localmente por conta.
+- O dashboard exige uma sessão local válida; sem login, redireciona para index.html.
+- cadastro.html continua criando contas que podem entrar pelo index.html.

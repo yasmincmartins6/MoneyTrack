@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#15803d">
+  <title>MoneyTrack | Início</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <main class="dashboard-page">
+    <header class="dashboard-header">
+      <a class="brand" href="dashboard.html" aria-label="MoneyTrack - início">
+        <span class="brand-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M3.5 7.5A2.5 2.5 0 0 1 6 5h13a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H6a2.5 2.5 0 0 1-2.5-2.5v-10Z" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M3.5 8H18a2 2 0 0 1 2 2v1h-4a2.5 2.5 0 0 0 0 5h4" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <circle cx="16" cy="13.5" r=".9" fill="currentColor"/>
+          </svg>
+        </span>
+        <span>Money<span class="brand-accent">Track</span></span>
+      </a>
+      <div class="header-actions">
+        <span class="user-chip"><span class="avatar" id="user-avatar">M</span><span id="user-name">Minha conta</span></span>
+        <button class="logout-button" id="logout-button" type="button">Sair</button>
+      </div>
+    </header>
+
+    <section class="welcome-row">
+      <div>
+        <p class="eyebrow">PAINEL FINANCEIRO</p>
+        <h1 id="greeting">Olá!</h1>
+        <p class="muted">Acompanhe suas finanças em um só lugar.</p>
+      </div>
+      <button class="primary-small" id="add-transaction-top" type="button">＋ Nova movimentação</button>
+    </section>
+
+    <section class="summary-grid" aria-label="Resumo financeiro">
+      <article class="summary-card balance-card">
+        <div class="summary-label"><span>Saldo atual</span><span class="card-symbol">R$</span></div>
+        <p class="summary-value" id="balance-value">R$ 0,00</p>
+        <p class="summary-caption">Receitas menos despesas</p>
+      </article>
+      <article class="summary-card">
+        <div class="summary-label"><span>Receitas</span><span class="metric-icon income-icon">↙</span></div>
+        <p class="summary-value" id="income-value">R$ 0,00</p>
+        <p class="summary-caption">Total registrado</p>
+      </article>
+      <article class="summary-card">
+        <div class="summary-label"><span>Despesas</span><span class="metric-icon expense-icon">↗</span></div>
+        <p class="summary-value" id="expense-value">R$ 0,00</p>
+        <p class="summary-caption">Total registrado</p>
+      </article>
+    </section>
+
+    <section class="content-grid">
+      <article class="panel transaction-panel" id="transaction-panel">
+        <div class="panel-heading">
+          <div><h2>Movimentações</h2><p class="muted">Suas receitas e despesas recentes</p></div>
+          <button class="text-button" id="clear-transactions" type="button">Limpar tudo</button>
+        </div>
+
+        <form id="transaction-form" class="transaction-form" novalidate>
+          <div class="field">
+            <label for="transaction-description">Descrição</label>
+            <input id="transaction-description" type="text" placeholder="Ex.: Salário, mercado..." maxlength="80" required>
+            <small class="field-error" id="description-error"></small>
+          </div>
+          <div class="field">
+            <label for="transaction-amount">Valor (R$)</label>
+            <input id="transaction-amount" type="number" min="0.01" step="0.01" placeholder="0,00" required>
+            <small class="field-error" id="amount-error"></small>
+          </div>
+          <div class="field">
+            <label for="transaction-type">Tipo</label>
+            <select id="transaction-type">
+              <option value="income">Receita</option>
+              <option value="expense">Despesa</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="transaction-date">Data</label>
+            <input id="transaction-date" type="date" required>
+          </div>
+          <button class="submit-button add-button" type="submit">Adicionar movimentação</button>
+        </form>
+
+        <p class="status-message" id="transaction-status" role="status" aria-live="polite"></p>
+        <div class="table-wrap">
+          <table class="transactions-table">
+            <thead><tr><th>Descrição</th><th>Data</th><th>Tipo</th><th class="amount-col">Valor</th><th></th></tr></thead>
+            <tbody id="transactions-body"></tbody>
+          </table>
+          <div id="empty-state" class="empty-state">
+            <span class="empty-icon">↗</span>
+            <strong>Nenhuma movimentação ainda</strong>
+            <p>Adicione sua primeira receita ou despesa no formulário acima.</p>
+          </div>
+        </div>
+      </article>
+
+      <aside class="panel tips-panel">
+        <div class="tips-icon">✦</div>
+        <h2>Seu dinheiro, sob controle</h2>
+        <p class="muted">Registre cada movimentação para entender para onde seu dinheiro está indo.</p>
+        <div class="tip-item"><span>1</span><p>Registre suas receitas, como salário e trabalhos extras.</p></div>
+        <div class="tip-item"><span>2</span><p>Anote despesas fixas e variáveis para acompanhar os gastos.</p></div>
+        <div class="tip-item"><span>3</span><p>Confira o saldo para planejar suas próximas metas.</p></div>
+        <div class="demo-notice">Os dados são salvos apenas neste navegador. Esta é uma demonstração escolar local.</div>
+      </aside>
+    </section>
+    <footer class="dashboard-footer">MoneyTrack <span>·</span> Controle financeiro pessoal</footer>
+  </main>
+  <script src="dashboard.js"></script>
+</body>
+</html>
